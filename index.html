@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07101f">
+  <title>Buildora AI — ابنِ موقعك بالذكاء الاصطناعي</title>
+  <style>
+    :root{
+      --bg:#050914;--panel:rgba(12,19,36,.82);--panel-solid:#0e172a;--soft:#141f36;
+      --text:#f8fafc;--muted:#94a3b8;--line:rgba(148,163,184,.16);--brand:#7c5cff;
+      --brand2:#25c2f5;--green:#38d9a9;--red:#ff6577;--amber:#ffca5c;
+      --shadow:0 30px 80px rgba(0,0,0,.38);--radius:24px
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;font-family:"Segoe UI",Tahoma,Arial,sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden}
+    body:before,body:after{content:"";position:fixed;inset:auto;z-index:-2;border-radius:50%;filter:blur(90px);opacity:.34;pointer-events:none}
+    body:before{width:420px;height:420px;background:#633cff;top:-170px;right:-110px}body:after{width:380px;height:380px;background:#04b9e8;bottom:-180px;left:-130px}
+    .grid-bg{position:fixed;inset:0;z-index:-3;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000 0,transparent 85%)}
+    .shell{width:min(1180px,calc(100% - 28px));margin:auto;padding:28px 0 46px}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 2px 34px}.brand{display:flex;align-items:center;gap:12px;font-weight:850;font-size:20px}.logo{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 10px 35px rgba(93,78,255,.42)}.logo svg{width:22px}.nav-pill{border:1px solid var(--line);background:rgba(12,19,36,.65);color:var(--muted);padding:9px 14px;border-radius:999px;font-size:13px;backdrop-filter:blur(12px)}
+    .hero{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:42px;margin:18px 0 34px}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#c8c0ff;background:rgba(124,92,255,.12);border:1px solid rgba(124,92,255,.25);padding:8px 12px;border-radius:999px;font-size:13px;font-weight:700}.pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 7px rgba(56,217,169,.09)}h1{font-size:clamp(42px,7vw,78px);line-height:1.04;letter-spacing:-2px;margin:18px 0 16px;max-width:800px}.gradient{background:linear-gradient(90deg,#fff 0,#c9c1ff 44%,#7fe7ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{font-size:18px;color:var(--muted);line-height:1.9;max-width:700px}.hero-card{position:relative;min-height:270px;border:1px solid var(--line);border-radius:30px;background:linear-gradient(145deg,rgba(23,34,59,.95),rgba(8,14,27,.95));box-shadow:var(--shadow);overflow:hidden;padding:24px}.hero-card:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:var(--brand);filter:blur(80px);opacity:.25;top:-70px;left:-50px}.mini-code{position:relative;background:#07101f;border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:8px;font-family:Consolas,monospace;color:#9ce8ff;font-size:13px;line-height:1.75;direction:ltr;text-align:left}.window-dots{display:flex;gap:6px;margin-bottom:12px}.window-dots i{width:9px;height:9px;border-radius:50%;display:block}.window-dots i:nth-child(1){background:#ff6b6b}.window-dots i:nth-child(2){background:#ffd43b}.window-dots i:nth-child(3){background:#51cf66}.agent-row{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:13px}.agent{padding:11px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:12px}.agent b{display:block;color:var(--text);margin-bottom:4px}
+    .workspace{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:20px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);backdrop-filter:blur(18px)}.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px}.panel-head h2{margin:0 0 7px;font-size:24px}.panel-head p{margin:0;color:var(--muted);font-size:14px}.number{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(124,92,255,.25),rgba(37,194,245,.15));border:1px solid rgba(124,92,255,.25);color:#d9d3ff;font-weight:800}
+    label{display:block;margin:17px 0 8px;font-weight:750;font-size:14px}.field,input,textarea{width:100%;border:1px solid var(--line);background:rgba(5,10,22,.62);color:var(--text);border-radius:14px;padding:14px 15px;outline:none;transition:.2s}textarea{min-height:175px;resize:vertical;line-height:1.8}.field:focus,input:focus,textarea:focus{border-color:rgba(124,92,255,.8);box-shadow:0 0 0 4px rgba(124,92,255,.1)}.hint{color:var(--muted);font-size:12px;margin-top:7px}
+    .model-picker{position:relative}.model-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;text-align:right;border:1px solid var(--line);background:rgba(5,10,22,.62);color:var(--text);border-radius:16px;padding:13px 14px;cursor:pointer;transition:.2s}.model-trigger:hover,.model-trigger.open{border-color:rgba(124,92,255,.72);background:rgba(17,25,47,.9)}.model-left{display:flex;align-items:center;gap:12px}.model-icon{width:39px;height:39px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,rgba(124,92,255,.28),rgba(37,194,245,.18));color:#d7d2ff}.model-main{font-weight:800}.model-sub{display:block;color:var(--muted);font-size:12px;margin-top:3px}.chevron{transition:.22s;color:var(--muted)}.model-trigger.open .chevron{transform:rotate(180deg)}.model-menu{position:absolute;z-index:20;top:calc(100% + 9px);right:0;left:0;padding:9px;border:1px solid var(--line);border-radius:18px;background:#0b1427;box-shadow:0 30px 70px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(-8px) scale(.985);transition:.18s}.model-menu.open{opacity:1;visibility:visible;transform:none}.model-option{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:11px;width:100%;padding:12px;border:0;background:transparent;color:var(--text);border-radius:13px;cursor:pointer;text-align:right}.model-option:hover,.model-option.selected{background:rgba(124,92,255,.13)}.model-option .radio{width:18px;height:18px;border:2px solid #536078;border-radius:50%;position:relative}.model-option.selected .radio{border-color:#8e7bff}.model-option.selected .radio:after{content:"";position:absolute;inset:3px;border-radius:50%;background:#8e7bff}.model-title{font-weight:800}.model-desc{font-size:12px;color:var(--muted);margin-top:3px}.price{text-align:left;direction:ltr}.price strong{display:block;color:#d8e4ff;font-size:12px}.price span{color:var(--muted);font-size:10px}.tag{display:inline-flex;margin-inline-start:7px;padding:3px 7px;border-radius:999px;background:rgba(56,217,169,.12);color:#73ebbf;font-size:10px}.tag.smart{background:rgba(255,202,92,.12);color:#ffd77f}
+    .checks{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:19px}.check{position:relative;display:flex;align-items:center;gap:10px;background:rgba(5,10,22,.5);border:1px solid var(--line);padding:13px;border-radius:14px;cursor:pointer}.check input{width:18px;height:18px;accent-color:var(--brand)}.check label{margin:0;font-weight:600;cursor:pointer}.actions{display:flex;gap:11px;margin-top:22px}button{font:inherit}.primary,.secondary{border:0;border-radius:14px;padding:14px 18px;font-weight:800;cursor:pointer;transition:.2s}.primary{flex:1;color:#fff;background:linear-gradient(135deg,var(--brand),#5c7cff 55%,#28bde8);box-shadow:0 13px 30px rgba(91,83,255,.28)}.primary:hover{transform:translateY(-1px);box-shadow:0 17px 38px rgba(91,83,255,.4)}.secondary{background:var(--soft);color:var(--text)}button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}.error{display:none;margin-top:15px;padding:13px;border-radius:13px;border:1px solid rgba(255,101,119,.25);background:rgba(255,101,119,.1);color:#ffd9df}
+    .status-card{position:sticky;top:18px}.status-top{display:flex;align-items:center;justify-content:space-between}.status-top h2{margin:0}.badge{padding:7px 11px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:12px;color:var(--muted)}.progress{height:7px;background:#111b30;border-radius:99px;overflow:hidden;margin:19px 0 20px}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand2));border-radius:99px;transition:width .35s}.steps{display:grid;gap:9px}.step{display:flex;align-items:center;gap:11px;padding:11px 12px;border:1px solid transparent;border-radius:13px;color:#718096;transition:.2s}.dot{width:27px;height:27px;flex:0 0 27px;border-radius:9px;display:grid;place-items:center;background:#152039;font-size:12px}.step.active{color:var(--text);border-color:rgba(124,92,255,.22);background:rgba(124,92,255,.08)}.step.active .dot{background:var(--brand);animation:pulseGlow 1s infinite alternate}.step.done{color:#dce7f7}.step.done .dot{background:rgba(56,217,169,.18);color:var(--green)}@keyframes pulseGlow{to{box-shadow:0 0 0 6px rgba(124,92,255,.12)}}.links{display:none;margin-top:17px;padding:15px;border:1px solid rgba(56,217,169,.27);background:rgba(56,217,169,.08);border-radius:15px}.links strong{color:#86f0c8}.links a{display:flex;align-items:center;gap:7px;color:#a7f4d7;margin-top:9px;text-decoration:none;overflow-wrap:anywhere}.security-note{display:flex;gap:10px;margin-top:19px;padding-top:17px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;line-height:1.7}.security-note svg{flex:0 0 18px;margin-top:2px}.access-wrap{margin-top:14px}.hidden{display:none!important}
+    @media(max-width:940px){.hero{grid-template-columns:1fr}.hero-card{display:none}.workspace{grid-template-columns:1fr}.status-card{position:static}.hero{margin-top:0}.shell{padding-top:16px}}
+    @media(max-width:600px){h1{font-size:43px;letter-spacing:-1px}.panel{padding:18px;border-radius:19px}.checks{grid-template-columns:1fr}.actions{flex-direction:column}.nav-pill{display:none}.model-option{grid-template-columns:auto 1fr}.price{grid-column:2;text-align:right;margin-top:2px}.hero p{font-size:16px}}
+  </style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="shell">
+  <nav>
+    <div class="brand"><span class="logo"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6.5v11L12 22l8-4.5v-11L12 2Z" stroke="white" stroke-width="1.8"/><path d="m8 12 2.4 2.4L16.5 8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Buildora AI</div>
+    <span class="nav-pill">Multi‑Agent Website Builder</span>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <span class="eyebrow"><i class="pulse"></i>من الفكرة إلى رابط مباشر</span>
+      <h1 class="gradient">ابنِ موقعًا كاملًا بوكلاء الذكاء الاصطناعي</h1>
+      <p>اختر نموذج Gemini المناسب، اشرح مشروعك، ودع المنصة تنشئ الملفات وقاعدة البيانات ومستودع GitHub ثم تنشر الموقع على Vercel.</p>
+    </div>
+    <div class="hero-card">
+      <div class="mini-code"><div class="window-dots"><i></i><i></i><i></i></div><span style="color:#c792ea">const</span> project = <span style="color:#82aaff">await</span> agents.build({<br> &nbsp;idea: <span style="color:#c3e88d">"متجر عربي حديث"</span>,<br> &nbsp;database: <span style="color:#ffcb6b">"supabase"</span>,<br> &nbsp;deploy: <span style="color:#ffcb6b">"vercel"</span><br>});</div>
+      <div class="agent-row"><div class="agent"><b>Planner</b>يحلل الفكرة</div><div class="agent"><b>Builder</b>يكتب الملفات</div><div class="agent"><b>Reviewer</b>يفحص الكود</div></div>
+    </div>
+  </section>
+
+  <section class="workspace">
+    <div class="panel">
+      <div class="panel-head"><div><h2>مشروع جديد</h2><p>أدخل تفاصيل واضحة للحصول على نتيجة أفضل.</p></div><span class="number">01</span></div>
+      <form id="form">
+        <label for="name">اسم المشروع بالإنجليزية</label>
+        <input id="name" required minlength="3" maxlength="50" placeholder="smart-store" autocomplete="off">
+
+        <label for="description">وصف الموقع المطلوب</label>
+        <textarea id="description" required minlength="20" maxlength="7000" placeholder="مثال: أريد متجرًا عربيًا حديثًا لبيع الملابس، يحتوي على صفحة رئيسية، منتجات، سلة شراء، تسجيل مستخدمين ولوحة إدارة..."></textarea>
+        <div class="hint">اذكر الصفحات، الألوان، الوظائف، وطريقة استخدام قاعدة البيانات.</div>
+
+        <label>نموذج Gemini</label>
+        <div class="model-picker" id="modelPicker">
+          <button class="model-trigger" id="modelTrigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="model-left"><span class="model-icon">✦</span><span><span class="model-main" id="selectedModelName">Gemini 3.5 Flash‑Lite</span><span class="model-sub" id="selectedModelSub">سريع واقتصادي — مناسب لمعظم المشاريع</span></span></span>
+            <span class="chevron">⌄</span>
+          </button>
+          <div class="model-menu" id="modelMenu" role="listbox">
+            <button class="model-option" type="button" data-model="gemini-3.1-flash-lite" data-name="Gemini 3.1 Flash‑Lite" data-sub="الأقل تكلفة للمهام الخفيفة"><span class="radio"></span><span><span class="model-title">Gemini 3.1 Flash‑Lite <span class="tag">الأرخص</span></span><div class="model-desc">سريع للمهام البسيطة والتوليد الخفيف.</div></span><span class="price"><strong>$0.25 input</strong><span>/ 1M tokens</span></span></button>
+            <button class="model-option selected" type="button" data-model="gemini-3.5-flash-lite" data-name="Gemini 3.5 Flash‑Lite" data-sub="سريع واقتصادي — مناسب لمعظم المشاريع"><span class="radio"></span><span><span class="model-title">Gemini 3.5 Flash‑Lite <span class="tag">موصى به</span></span><div class="model-desc">أفضل توازن اقتصادي للـsub‑agents وJSON.</div></span><span class="price"><strong>$0.30 / $2.50</strong><span>input / output</span></span></button>
+            <button class="model-option" type="button" data-model="gemini-3.6-flash" data-name="Gemini 3.6 Flash" data-sub="الأقوى للبرمجة والمهام متعددة الخطوات"><span class="radio"></span><span><span class="model-title">Gemini 3.6 Flash <span class="tag smart">الأحدث</span></span><div class="model-desc">قوي للبرمجة والـagents والمشاريع المعقدة.</div></span><span class="price"><strong>$1.50 / $7.50</strong><span>input / output</span></span></button>
+            <button class="model-option" type="button" data-model="gemini-3.5-flash" data-name="Gemini 3.5 Flash" data-sub="ذكاء قوي للمهام المعقدة"><span class="radio"></span><span><span class="model-title">Gemini 3.5 Flash</span><div class="model-desc">أداء قوي مستقر، لكنه الأعلى تكلفة في القائمة.</div></span><span class="price"><strong>$1.50 / $9.00</strong><span>input / output</span></span></button>
+          </div>
+          <input id="model" type="hidden" value="gemini-3.5-flash-lite">
+        </div>
+
+        <div class="checks">
+          <div class="check"><input id="supabase" type="checkbox" checked><label for="supabase">إنشاء قاعدة Supabase</label></div>
+          <div class="check"><input id="private" type="checkbox" checked><label for="private">GitHub Repository خاص</label></div>
+        </div>
+
+        <div class="access-wrap"><label for="access">Builder Access Key <span style="color:var(--muted);font-weight:500">(اختياري)</span></label><input id="access" type="password" autocomplete="off" placeholder="نفس BUILDER_ACCESS_KEY"></div>
+
+        <div class="actions"><button id="submit" class="primary" type="submit">✦ ابدأ بناء الموقع</button><button type="reset" class="secondary">مسح</button></div>
+        <div id="error" class="error"></div>
+      </form>
+    </div>
+
+    <aside class="panel status-card">
+      <div class="status-top"><h2>حالة التنفيذ</h2><span id="badge" class="badge">جاهز</span></div>
+      <div class="progress"><span id="progressBar"></span></div>
+      <div id="steps" class="steps"></div>
+      <div id="links" class="links"><strong>✓ تم نشر المشروع بنجاح</strong><a id="site" target="_blank" rel="noopener"></a><a id="repo" target="_blank" rel="noopener"></a></div>
+      <div class="security-note"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 5 6v5c0 4.6 2.9 8.3 7 10 4.1-1.7 7-5.4 7-10V6l-7-3Z" stroke="currentColor" stroke-width="1.7"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.7"/></svg><span>المفاتيح الحساسة تبقى داخل Vercel ولا يتم إرسالها إلى المواقع التي ينشئها النموذج.</span></div>
+    </aside>
+  </section>
+</div>
+<script>
+const order=['generate','supabase_create','supabase_finish','github','vercel','deploy_check','completed'];
+const labels={generate:'تخطيط وكتابة ملفات الموقع',supabase_create:'إنشاء مشروع Supabase',supabase_finish:'تشغيل SQL وتجهيز الاتصال',github:'إنشاء GitHub ورفع الملفات',vercel:'إنشاء مشروع Vercel',deploy_check:'انتظار اكتمال النشر',completed:'الموقع جاهز'};
+const form=document.querySelector('#form'),submit=document.querySelector('#submit'),badge=document.querySelector('#badge'),steps=document.querySelector('#steps'),errorBox=document.querySelector('#error'),links=document.querySelector('#links'),progressBar=document.querySelector('#progressBar');
+const trigger=document.querySelector('#modelTrigger'),menu=document.querySelector('#modelMenu'),modelInput=document.querySelector('#model');
+let stopped=false;
+function toggleMenu(force){const open=typeof force==='boolean'?force:!menu.classList.contains('open');menu.classList.toggle('open',open);trigger.classList.toggle('open',open);trigger.setAttribute('aria-expanded',String(open))}
+trigger.addEventListener('click',()=>toggleMenu());
+document.addEventListener('click',e=>{if(!document.querySelector('#modelPicker').contains(e.target))toggleMenu(false)});
+document.querySelectorAll('.model-option').forEach(option=>option.addEventListener('click',()=>{document.querySelectorAll('.model-option').forEach(x=>x.classList.remove('selected'));option.classList.add('selected');modelInput.value=option.dataset.model;document.querySelector('#selectedModelName').textContent=option.dataset.name;document.querySelector('#selectedModelSub').textContent=option.dataset.sub;toggleMenu(false)}));
+function headers(){const h={'Content-Type':'application/json'},key=document.querySelector('#access').value.trim();if(key)h['x-builder-key']=key;return h}
+function render(current,status){const index=order.indexOf(current);const completed=status==='completed';const percent=completed?100:index<0?0:Math.max(5,Math.round((index/order.length)*100));progressBar.style.width=`${percent}%`;steps.innerHTML=order.map((name,i)=>`<div class="step ${i<index||completed?'done':i===index?'active':''}"><span class="dot">${i<index||completed?'✓':i===index?'↻':'•'}</span><span>${labels[name]}</span></div>`).join('')}
+function fail(message){stopped=true;submit.disabled=false;badge.textContent='فشل';errorBox.textContent=message;errorBox.style.display='block'}
+async function call(path,options={}){const r=await fetch(path,{...options,headers:{...headers(),...(options.headers||{})}});const data=await r.json().catch(()=>({}));if(!r.ok)throw new Error(data.error||`HTTP ${r.status}`);return data}
+async function run(jobId){while(!stopped){const job=await call('/api/step',{method:'POST',body:JSON.stringify({jobId})});badge.textContent=job.status==='completed'?'مكتمل':'جاري التنفيذ';render(job.current_step,job.status);if(job.status==='failed')throw new Error(job.error_message||'فشلت العملية');if(job.status==='completed'){submit.disabled=false;links.style.display='block';const status=await call(`/api/status?jobId=${encodeURIComponent(jobId)}`);const site=document.querySelector('#site'),repo=document.querySelector('#repo');site.href=status.siteUrl;site.textContent=`فتح الموقع: ${status.siteUrl}`;repo.href=status.repositoryUrl;repo.textContent=`فتح GitHub: ${status.repositoryUrl}`;return}await new Promise(r=>setTimeout(r,1800))}}
+form.addEventListener('submit',async e=>{e.preventDefault();stopped=false;submit.disabled=true;links.style.display='none';errorBox.style.display='none';badge.textContent='يبدأ الآن';render('generate','running');try{const job=await call('/api/start',{method:'POST',body:JSON.stringify({projectName:document.querySelector('#name').value,description:document.querySelector('#description').value,framework:'vanilla',model:modelInput.value,useSupabase:document.querySelector('#supabase').checked,privateRepo:document.querySelector('#private').checked})});await run(job.jobId)}catch(e){fail(e.message)}});
+form.addEventListener('reset',()=>{stopped=true;submit.disabled=false;badge.textContent='جاهز';links.style.display='none';errorBox.style.display='none';modelInput.value='gemini-3.5-flash-lite';const defaultOption=document.querySelector('[data-model="gemini-3.5-flash-lite"]');document.querySelectorAll('.model-option').forEach(x=>x.classList.toggle('selected',x===defaultOption));document.querySelector('#selectedModelName').textContent=defaultOption.dataset.name;document.querySelector('#selectedModelSub').textContent=defaultOption.dataset.sub;render('', 'idle')});
+render('', 'idle');
+</script>
+</body>
+</html>
