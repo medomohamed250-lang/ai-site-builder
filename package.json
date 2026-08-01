@@ -4,16 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
+    "dev": "npx vercel dev",
     "check": "node scripts/check.js"
   },
   "dependencies": {
     "@octokit/rest": "^22.0.0",
     "@supabase/supabase-js": "^2.57.4",
     "zod": "^4.1.11"
-  },
-  "devDependencies": {
-    "vercel": "^48.2.0"
   },
   "engines": {
     "node": "22.x"
